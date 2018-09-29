@@ -393,7 +393,7 @@ neverallow appdomain
 neverallow appdomain domain:netlink_kobject_uevent_socket { write append };
 
 # Sockets under /dev/socket that are not specifically typed.
-neverallow appdomain socket_device:sock_file write;
+neverallow { appdomain - system_app -platform_app } socket_device:sock_file write;
 
 # Unix domain sockets.
 neverallow appdomain adbd_socket:sock_file write;
@@ -542,3 +542,8 @@ neverallow {
   -bluetooth
   -system_app
 } bluetooth_prop:file create_file_perms;
+
+# Allow access to /sys/class/thermal
+allow appdomain sysfs_thermal:dir search;
+allow appdomain sysfs_thermal:file read;
+
