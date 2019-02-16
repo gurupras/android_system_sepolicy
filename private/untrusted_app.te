@@ -37,5 +37,6 @@ neverallow untrusted_app system_server:udp_socket {
         relabelfrom relabelto setattr setopt shutdown };
 
 allow untrusted_app sysfs:dir { read search open };
+allow untrusted_app sysfs:file { open read getattr };
 allow untrusted_app sysfs_thermal:dir { read search open };
 allow untrusted_app sysfs_thermal:file { open read getattr };
